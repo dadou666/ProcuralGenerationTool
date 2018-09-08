@@ -15,7 +15,7 @@ abstract public class Placement {
 			if (parent == null) {
 				regionAbsolu = region;
 			} else {
-
+				
 				regionAbsolu = region.regionPlacement(parent.regionAbsolu());
 			}
 		}
