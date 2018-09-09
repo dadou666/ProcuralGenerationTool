@@ -3,8 +3,13 @@ package gen.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import gen.Carre;
 import gen.Composition;
@@ -30,6 +35,11 @@ class Test {
 		
 		
 	}
+	@org.junit.jupiter.api.Test
+	void testXML() throws ParserConfigurationException, SAXException, IOException {
+		Generateur.lireXML("src/gen.xml");
+		
+	}
 	static public Generateur gen() {
 		Generateur gen = new Generateur();
 		gen.bases.put("Rouge", new Carre(Color.red));
@@ -42,7 +52,7 @@ class Test {
 		gen.compositions.put("A", c);
 		
 		e= new Element();
-		c.elements.add(e);
+		c.elements.put("A",e);
 		e.bases.add("Rouge");
 		e.bases.add("Bleue");
 		e.compositions.add("A");

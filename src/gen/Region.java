@@ -7,14 +7,20 @@ public class Region {
 	public float dy;
 	public boolean invX = false;
 	public boolean invY = false;
+	public Region() {
+		
+	}
+	public Region(float x,float y,float dx,float dy,boolean invX,boolean invY) {
+		this.x=x;
+		this.y=y;
+		this.dx=dx;
+		this.dy=dy;
+		this.invX = invX;
+		this.invY = invY;
+	}
 	public Region copier() {
-		Region r = new Region();
-		r.x=x;
-		r.y=y;
-		r.dx=dx;
-		r.dy=dy;
-		r.invX=invX;
-		r.invY=invY;
+		Region r = new Region(x,y,dx,dy,invX,invY);
+
 		return r;
 	}
 

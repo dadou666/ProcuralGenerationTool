@@ -40,5 +40,16 @@ public class Element {
 		}
 
 	}
+	public void ajouterBases(String ...values) {
+		for(String value:values) {
+			this.bases.add(value);
+		}
+	}
+	
+	public void ajouterCompositions(String ...values) {
+		for(String value:values) {
+			this.compositions.add(value);
+		}
+	}
 
 }

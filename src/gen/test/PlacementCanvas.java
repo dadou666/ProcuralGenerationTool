@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +14,9 @@ import java.util.Random;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import gen.Carre;
 import gen.Composition;
@@ -54,139 +58,24 @@ class PlacementCanvas extends JComponent implements KeyListener {
 	}
 
 	static public Generateur gen() {
-		Generateur gen = new Generateur();
-		gen.bases.put("Rouge", new Carre(Color.red));
-		gen.bases.put("Bleue", new Carre(Color.blue));
-		gen.bases.put("Green", new Carre(Color.green));
-		Composition c ;
-		Element e;
-		Region a;
-		c= new Composition();
-		gen.compositions.put("A", c);
-		
-		e= new Element();
-		c.elements.add(e);
-		e.bases.add("Rouge");
-	
-		e.compositions.add("A");
-		e.compositions.add("B");
-
-		
-		a= new Region();
-		a.x=0;
-		a.y=0;
-		a.dx=0.5f;
-		a.dy=0.5f;
-		a.invX = false;
-		a.invY = false;
-		e.regions.add(a);
-		
-		a= new Region();
-		a.x=0.5f;
-		a.y=0;
-		a.dx=0.5f;
-		a.dy=0.5f;
-		a.invX = true;
-		a.invY = false;
-		e.regions.add(a);
-		
-		a= new Region();
-		a.x=0.5f;
-		a.y=0.5f;
-		a.dx=0.5f;
-		a.dy=0.5f;
-		a.invX = true;
-		a.invY = true;
-		e.regions.add(a);
-		
-		a= new Region();
-		a.x=0.0f;
-		a.y=0.5f;
-		a.dx=0.5f;
-		a.dy=0.5f;
-		a.invX = false;
-		a.invY = true;
-		e.regions.add(a);
-		
-		c= new Composition();
-		gen.compositions.put("B", c);
-		e= new Element();
-		c.elements.add(e);
-	
-		e.bases.add("Bleue");
-	
-		e.compositions.add("A");
-		e.compositions.add("B");
-		e.compositions.add("C");
-		
-		a= new Region();
-		a.x=0.25f;
-		a.y=0;
-		a.dx=0.25f;
-		a.dy=0.25f;
-		a.invX = false;
-		a.invY = false;
-		e.regions.add(a);
-		
-		a= new Region();
-		a.x=0.25f;
-		a.y=0.75f;
-		a.dx=0.25f;
-		a.dy=0.25f;
-		a.invX = false;
-		a.invY = true;
-		e.regions.add(a);
-		
-		e= new Element();
-		c.elements.add(e);
-		e.bases.add("Rouge");
-		e.bases.add("Bleue");
-		e.bases.add("Green");
-		e.compositions.add("A");
-		e.compositions.add("B");
-	
-		
-		a= new Region();
-		a.x=0.0f;
-		a.y=0.25f;
-		a.dx=0.25f;
-		a.dy=0.50f;
-		a.invX = false;
-		a.invY = false;
-		e.regions.add(a);
-		
-		a= new Region();
-		a.x=0.75f;
-		a.y=0.25f;
-		a.dx=0.25f;
-		a.dy=0.50f;
-		a.invX = true;
-		a.invY = false;
-		e.regions.add(a);
-		c= new Composition();
-		gen.compositions.put("C", c);
-		e= new Element();
-		c.elements.add(e);
-		e.bases.add("Rouge");
-		e.bases.add("Bleue");
-		e.bases.add("Green");
-		e.compositions.add("A");
-		e.compositions.add("B");
-		
-		a= new Region();
-		a.x=0.5f;
-		a.y=0.5f;
-		a.dx=0.5f;
-		a.dy=0.5f;
-		a.invX = false;
-		a.invY = false;
-		e.regions.add(a);
-		
-
-	
-		
-		
-		return gen;
+		Generateur gen;
+		try {
+			gen = Generateur.lireXML("src/gen.xml");
+			gen.bases.put("Rouge", new Carre(Color.red));
+			gen.bases.put("Bleue", new Carre(Color.blue));
+			gen.bases.put("Vert", new Carre(Color.green));
+			return gen;
+		} catch (ParserConfigurationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SAXException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return null;
 
 	}
 
