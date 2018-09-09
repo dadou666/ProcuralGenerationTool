@@ -1,6 +1,9 @@
 package gen;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,14 +34,21 @@ public class Generateur {
 
 	public Random random = new Random();
 
-	public static Generateur lireXML(String chemin) throws ParserConfigurationException, SAXException, IOException {
+	public static Generateur lireFichierXML(String chemin) throws ParserConfigurationException, SAXException, IOException {
+		InputStream is=Files.newInputStream(Paths.get(chemin));
+		Generateur gen = lireFluxXML(is);
+		is.close();
+		return gen;
+
+	}
+	public static Generateur lireFluxXML(InputStream is) throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory documentumentBuilderFactory = DocumentBuilderFactory.newInstance();
 
 		documentumentBuilderFactory.setNamespaceAware(true);
 
 		DocumentBuilder documentumentBuilder = documentumentBuilderFactory.newDocumentBuilder();
 
-		Document document = documentumentBuilder.parse(chemin);
+		Document document = documentumentBuilder.parse(is);
 		Generateur gen = new Generateur();
 		NodeList nl = document.getChildNodes();
 		nl = nl.item(0).getChildNodes();
@@ -90,7 +100,6 @@ public class Generateur {
 		return gen;
 
 	}
-
 	public PlacementArbre generer(String composition, float dx, float dy, int n) {
 		Region regionPlacement = new Region(0, 0, dx, dy, false, false);
 

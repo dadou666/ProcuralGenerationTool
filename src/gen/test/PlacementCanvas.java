@@ -27,12 +27,13 @@ import gen.PlacementFeuille;
 import gen.Region;
 
 class PlacementCanvas extends JComponent implements KeyListener {
-	public static int width = 600;
-	public static int height = 400;
+	
 
 	public Generateur gen;
 	public List<PlacementFeuille> list = new ArrayList<>();
-	int n=3;
+	static int n=5;
+	public static int width = 1200;
+	public static int height =800;
 	String main="B";
 
 	public PlacementCanvas(Generateur gen) {
@@ -51,16 +52,17 @@ class PlacementCanvas extends JComponent implements KeyListener {
 			Carre carre = (Carre) pf.base;
 			g.setColor(carre.color);
 			g.fillRect((int)region.x, (int)region.y, (int)region.dx, (int)region.dy);
-			System.out.println( region);
+			//System.out.println( region);
 			
 		}
+		System.out.println( "ok");
 
 	}
 
 	static public Generateur gen() {
 		Generateur gen;
 		try {
-			gen = Generateur.lireXML("src/gen.xml");
+			gen = Generateur.lireFichierXML("src/gen.xml");
 			gen.bases.put("Rouge", new Carre(Color.red));
 			gen.bases.put("Bleue", new Carre(Color.blue));
 			gen.bases.put("Vert", new Carre(Color.green));

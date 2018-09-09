@@ -1,26 +1,26 @@
 <a>
 	<composition nom="A">
-		<element nom="A" compositions="A B" bases="Rouge">
-			<region x="0" y="0" dx="0.5" dy="0.5" invX="false"
+		<element nom="A" compositions="B" bases="Rouge">
+			<region x="0" y="0" dx="0.45" dy="0.45" invX="false"
 				invY="false" />
-			<region x="0.5" y="0" dx="0.5" dy="0.5" invX="true"
+			<region x="0.55" y="0" dx="0.45" dy="0.45" invX="true"
 				invY="false" />
-			<region x="0.5" y="0.5" dx="0.5" dy="0.5" invX="true"
+			<region x="0.55" y="0.55" dx="0.45" dy="0.45" invX="true"
 				invY="true" />
-			<region x="0" y="0.5" dx="0.5" dy="0.5" invX="false"
+			<region x="0" y="0.55" dx="0.45" dy="0.45" invX="false"
 				invY="true" />
 		</element>
 
 	</composition>
 	<composition nom="B">
-		<element nom="A" compositions="A B C" bases="Bleue">
-			<region x="0.25" y="0" dx="0.25" dy="0.25" invX="false"
+		<element nom="A" compositions="A C B" bases="Bleue">
+			<region x="0.375" y="0" dx="0.25" dy="0.25" invX="false"
 				invY="false" />
-			<region x="0.25" y="0.75" dx="0.25" dy="0.25" invX="false"
+			<region x="0.375" y="0.75" dx="0.25" dy="0.25" invX="false"
 				invY="true" />
 
 		</element>
-		<element nom="B" compositions="A B C" bases="Bleue">
+		<element nom="B" compositions="A C" bases="Bleue">
 			<region x="0.0" y="0.25" dx="0.25" dy="0.5" invX="false"
 				invY="false" />
 			<region x="0.75" y="0.25" dx="0.25" dy="0.5" invX="true"

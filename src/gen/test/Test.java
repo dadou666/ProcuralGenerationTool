@@ -37,7 +37,7 @@ class Test {
 	}
 	@org.junit.jupiter.api.Test
 	void testXML() throws ParserConfigurationException, SAXException, IOException {
-		Generateur.lireXML("src/gen.xml");
+		Generateur.lireFichierXML("src/gen.xml");
 		
 	}
 	static public Generateur gen() {
