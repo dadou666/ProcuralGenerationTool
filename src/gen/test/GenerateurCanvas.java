@@ -67,7 +67,7 @@ public class GenerateurCanvas extends SwingBuilder implements ListSelectionListe
 
 		texte = new JTextArea();
 		texte.setText(src);
-		add(new JScrollPane(texte));
+		//add(new JScrollPane(texte));
 
 		end();
 		this.open("Generateur");
@@ -87,7 +87,7 @@ public class GenerateurCanvas extends SwingBuilder implements ListSelectionListe
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			Files.write(Paths.get(this.fichier), this.texte.getText().getBytes());
+			//Files.write(Paths.get(this.fichier), this.texte.getText().getBytes());
 			gen = Generateur.lireFichierXML(fichier);
 			Vector<String> vector = new Vector<>();
 			vector.addAll(gen.compositions.keySet());
